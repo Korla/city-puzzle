@@ -1,13 +1,14 @@
 var {evaluate} = require('./evaluate');
+var {no, D, U, R, L, UR} = require('../mocks/mocks')
 
 describe('evaluate', () => {
   it('can have no connections', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), no(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -16,11 +17,11 @@ describe('evaluate', () => {
 
   it('can connect to the top', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), D(), no()],
+      [no(), U(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -29,11 +30,11 @@ describe('evaluate', () => {
 
   it('can be blocked above', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), U(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -42,11 +43,11 @@ describe('evaluate', () => {
 
   it('can block going down', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), D(), no()],
+      [no(), no(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -55,11 +56,11 @@ describe('evaluate', () => {
 
   it('can connect to the right', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), R(), L()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -68,11 +69,11 @@ describe('evaluate', () => {
 
   it('can be blocked to the right', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), R(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -81,11 +82,11 @@ describe('evaluate', () => {
 
   it('can block going left', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 1]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), no(), L()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -94,11 +95,11 @@ describe('evaluate', () => {
 
   it('can connect to the bottom', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), D(), no()],
+      [no(), U(), no()]
+    ];
 
     // Act
     // Assert
@@ -107,11 +108,11 @@ describe('evaluate', () => {
 
   it('can be blocked to the bottom', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), D(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -120,11 +121,11 @@ describe('evaluate', () => {
 
   it('can block going up', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), no(), no()],
+      [no(), U(), no()]
+    ];
 
     // Act
     // Assert
@@ -133,11 +134,11 @@ describe('evaluate', () => {
 
   it('can connect to the left', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [R(), L(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -146,11 +147,11 @@ describe('evaluate', () => {
 
   it('can be blocked to the left', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 1], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [no(), L(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -159,11 +160,11 @@ describe('evaluate', () => {
 
   it('can block going right', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), no(), no()],
+      [R(), no(), no()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert
@@ -172,11 +173,11 @@ describe('evaluate', () => {
 
   it('can have multiple connections', () => {
     // Arrange
-    var evalgrid = createGridWithRoads([
-      [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],
-      [[0, 0, 0, 0], [1, 1, 0, 0], [0, 0, 0, 1]],
-      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-    ]);
+    var evalgrid = [
+      [no(), D(), no()],
+      [no(), UR(), L()],
+      [no(), no(), no()]
+    ];
 
     // Act
     // Assert

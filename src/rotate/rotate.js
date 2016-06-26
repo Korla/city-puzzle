@@ -6,9 +6,9 @@ var rotate = grid => {
   for(var y = 0; y < grid.length; y++) {
     var row = grid[y];
     for(var x = 0; x < row.length; x++) {
-      var piece = row[x];
+      var spot = row[x];
       rotated[x] = rotated[x] || [];
-      rotated[x].unshift(piece);
+      rotated[x].unshift(spot);
     }
   }
   return rotated;
