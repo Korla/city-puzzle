@@ -1,17 +1,16 @@
-var validate = (grid, [xMin, yMin], [xMax, yMax]) => {
-  if(xMin > xMax) throw Error(`xMin: ${xMin} is greater than xMax: ${xMax}`);
-  if(yMin > yMax) throw Error(`yMin: ${yMin} is greater than yMax: ${yMax}`);
-  if(grid[0][xMin] === undefined) throw Error('xMin out of bounds: ' + xMin);
-  if(grid[0][xMax] === undefined) throw Error('xMax out of bounds: ' + xMax);
-  if(grid[yMin] === undefined) throw Error('yMin out of bounds: ' + yMin);
-  if(grid[yMax] === undefined) throw Error('yMax out of bounds: ' + yMax);
-  return true;
-}
+var {expect, expectGrid} = require('../utils/expect');
 
-var cut = (grid, [xMin, yMin], [xMax, yMax]) =>
-  !validate(grid, [xMin, yMin], [xMax, yMax]) ||
-  grid
+var cut = (grid, [xMin, yMin], [xMax, yMax]) => {
+  expectGrid(grid);
+  expect(xMin <= xMax, `xMin: ${xMin} is greater than xMax: ${xMax}`);
+  expect(yMin <= yMax, `yMin: ${yMin} is greater than yMax: ${yMax}`);
+  expect(grid[0][xMin] !== undefined, 'xMin out of bounds: ' + xMin);
+  expect(grid[0][xMax] !== undefined, 'xMax out of bounds: ' + xMax);
+  expect(grid[yMin] !== undefined, 'yMin out of bounds: ' + yMin);
+  expect(grid[yMax] !== undefined, 'yMax out of bounds: ' + yMax);
+  return grid
     .slice(yMin, yMax + 1)
     .map(row => row.slice(xMin, xMax + 1));
+}
 
 export {cut};

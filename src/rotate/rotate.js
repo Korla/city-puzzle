@@ -1,4 +1,7 @@
+var {expectGrid} = require('../utils/expect');
+
 var rotate = grid => {
+  expectGrid(grid);
   var rotated = [];
   for(var y = 0; y < grid.length; y++) {
     var row = grid[y];
@@ -11,6 +14,6 @@ var rotate = grid => {
   return rotated;
 }
 
-var rotateAnti = grid => rotate(rotate(rotate(grid)));
+var rotateAntiCW = grid => rotate(rotate(rotate(grid)));
 
-export {rotate, rotateAnti};
+export {rotate, rotateAntiCW};
