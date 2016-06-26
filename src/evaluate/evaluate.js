@@ -1,4 +1,4 @@
-var {expectGrid} = require('../utils/expect');
+var {expect, expectGrid} = require('../utils/expect');
 
 var directions = {
   up: 0,
@@ -11,6 +11,7 @@ var matches = piece => (dir1, p2, dir2) => piece.roads[dir1] === p2.roads[dir2];
 
 var evaluate = evalgrid => {
   expectGrid(evalgrid);
+  expect(evalgrid.length === 3, `Evalgrids are expected to be of size 3, but is instead ${evalgrid.length}`);
   var pieceMatches = matches(evalgrid[1][1]);
   var topMatches = pieceMatches(directions.up, evalgrid[0][1], directions.down);
   var rightMatches = pieceMatches(directions.right, evalgrid[1][2], directions.left);
