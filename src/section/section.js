@@ -1,6 +1,6 @@
 var {expect, expectGrid} = require('../utils/expect');
 
-var cut = (grid, [xMin, yMin], [xMax, yMax]) => {
+var section = (grid, [xMin, yMin], [xMax, yMax]) => {
   expectGrid(grid);
   expect(xMin <= xMax, `xMin: ${xMin} is greater than xMax: ${xMax}`);
   expect(yMin <= yMax, `yMin: ${yMin} is greater than yMax: ${yMax}`);
@@ -13,4 +13,4 @@ var cut = (grid, [xMin, yMin], [xMax, yMax]) => {
     .map(row => row.slice(xMin, xMax + 1));
 }
 
-export {cut};
+export {section};

@@ -1,14 +1,14 @@
-var {cut} = require('./cut');
+var {section} = require('./section');
 
-describe('cut', () => {
-  it('can return a row cut', () => {
+describe('section', () => {
+  it('can return a row section', () => {
     // Arrange
     var grid = createGrid([4,4]);
     var topLeft = [1,1];
     var bottomRight = [2,1];
 
     // Act
-    var result = cut(grid, topLeft, bottomRight);
+    var result = section(grid, topLeft, bottomRight);
 
     // Assert
     expect(result.length).toEqual(1);
@@ -17,14 +17,14 @@ describe('cut', () => {
     expect(result[0][1]).toEqual('21');
   });
 
-  it('can return a column cut', () => {
+  it('can return a column section', () => {
     // Arrange
     var grid = createGrid([4,4]);
     var topLeft = [1,1];
     var bottomRight = [1,2];
 
     // Act
-    var result = cut(grid, topLeft, bottomRight);
+    var result = section(grid, topLeft, bottomRight);
 
     // Assert
     expect(result.length).toEqual(2);
@@ -34,14 +34,14 @@ describe('cut', () => {
     expect(result[1][0]).toEqual('12');
   });
 
-  it('can return a row and column cut', () => {
+  it('can return a row and column section', () => {
     // Arrange
     var grid = createGrid([4,4]);
     var topLeft = [1,1];
     var bottomRight = [2,2];
 
     // Act
-    var result = cut(grid, topLeft, bottomRight);
+    var result = section(grid, topLeft, bottomRight);
 
     // Assert
     expect(result.length).toEqual(2);
@@ -53,14 +53,14 @@ describe('cut', () => {
     expect(result[1][1]).toEqual('22');
   });
 
-  it('returns the grid if the desired cut is the same as the grid', () => {
+  it('returns the grid if the desired section is the same as the grid', () => {
     // Arrange
     var grid = createGrid([4,4]);
     var topLeft = [0,0];
     var bottomRight = [3,3];
 
     // Act
-    var result = cut(grid, topLeft, bottomRight);
+    var result = section(grid, topLeft, bottomRight);
 
     // Assert
     expect(result.length).toEqual(4);
@@ -80,14 +80,14 @@ describe('cut', () => {
 
     // Act
     // Assert
-    expect(() => cut(grid, [-1,0], [3,3])).toThrow();
-    expect(() => cut(grid, [0,-1], [3,3])).toThrow();
-    expect(() => cut(grid, [4,0], [3,3])).toThrow();
-    expect(() => cut(grid, [0,4], [3,3])).toThrow();
-    expect(() => cut(grid, [0,0], [4,3])).toThrow();
-    expect(() => cut(grid, [0,0], [3,4])).toThrow();
-    expect(() => cut(grid, [0,0], [-1,3])).toThrow();
-    expect(() => cut(grid, [0,0], [3,-1])).toThrow();
+    expect(() => section(grid, [-1,0], [3,3])).toThrow();
+    expect(() => section(grid, [0,-1], [3,3])).toThrow();
+    expect(() => section(grid, [4,0], [3,3])).toThrow();
+    expect(() => section(grid, [0,4], [3,3])).toThrow();
+    expect(() => section(grid, [0,0], [4,3])).toThrow();
+    expect(() => section(grid, [0,0], [3,4])).toThrow();
+    expect(() => section(grid, [0,0], [-1,3])).toThrow();
+    expect(() => section(grid, [0,0], [3,-1])).toThrow();
   });
 
   it('throws if any of the coordinates are illegal', () => {
@@ -96,8 +96,8 @@ describe('cut', () => {
 
     // Act
     // Assert
-    expect(() => cut(grid, [3,0], [0,3])).toThrow();
-    expect(() => cut(grid, [0,3], [3,0])).toThrow();
+    expect(() => section(grid, [3,0], [0,3])).toThrow();
+    expect(() => section(grid, [0,3], [3,0])).toThrow();
   });
 });
 
