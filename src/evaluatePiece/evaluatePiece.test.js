@@ -1,7 +1,7 @@
-var {evaluate} = require('./evaluate');
+var {evaluatePiece} = require('./evaluatePiece');
 var {no, D, U, R, L, UR} = require('../mocks/mocks')
 
-describe('evaluate', () => {
+describe('evaluatePiece', () => {
   it('can have no connections', () => {
     // Arrange
     var evalgrid = [
@@ -12,7 +12,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 
   it('can connect to the top', () => {
@@ -25,7 +25,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 
   it('can be blocked above', () => {
@@ -38,7 +38,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can block going down', () => {
@@ -51,7 +51,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can connect to the right', () => {
@@ -64,7 +64,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 
   it('can be blocked to the right', () => {
@@ -77,7 +77,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can block going left', () => {
@@ -90,7 +90,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can connect to the bottom', () => {
@@ -103,7 +103,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 
   it('can be blocked to the bottom', () => {
@@ -116,7 +116,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can block going up', () => {
@@ -129,7 +129,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can connect to the left', () => {
@@ -142,7 +142,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 
   it('can be blocked to the left', () => {
@@ -155,7 +155,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can block going right', () => {
@@ -168,7 +168,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(false);
+    expect(evaluatePiece(evalgrid)).toEqual(false);
   });
 
   it('can have multiple connections', () => {
@@ -181,7 +181,7 @@ describe('evaluate', () => {
 
     // Act
     // Assert
-    expect(evaluate(evalgrid)).toEqual(true);
+    expect(evaluatePiece(evalgrid)).toEqual(true);
   });
 });
 

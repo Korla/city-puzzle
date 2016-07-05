@@ -9,7 +9,7 @@ var directions = {
 
 var matches = spot => (dir1, p2, dir2) => spot.roads[dir1] === p2.roads[dir2];
 
-var evaluate = evalgrid => {
+var evaluatePiece = evalgrid => {
   expectGrid(evalgrid);
   expect(evalgrid.length === 3, `Evalgrids are expected to be of size 3, but is instead ${evalgrid.length}`);
   var spotMatches = matches(evalgrid[1][1]);
@@ -20,4 +20,4 @@ var evaluate = evalgrid => {
   return topMatches && rightMatches && bottomMatches && leftMatches;
 }
 
-export {evaluate};
+export {evaluatePiece};

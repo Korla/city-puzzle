@@ -1,6 +1,7 @@
-var spot = roads => ({
-  roads
-});
+var spot = roads => {
+  var rotate = () => spot(roads.unshift(roads.pop()));
+  return {roads, rotate};
+};
 
 var U = () => spot([1,0,0,0]);
 var R = () => spot([0,1,0,0]);
