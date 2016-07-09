@@ -53,6 +53,27 @@ describe('section', () => {
     expect(result[1][1]).toEqual('22');
   });
 
+  it('can return a rectangular section', () => {
+    // Arrange
+    var grid = createGrid([4,4]);
+    var topLeft = [1,1];
+    var bottomRight = [2,3];
+
+    // Act
+    var result = section(grid, topLeft, bottomRight);
+
+    // Assert
+    expect(result.length).toEqual(3);
+    expect(result[0].length).toEqual(2);
+    expect(result[1].length).toEqual(2);
+    expect(result[0][0]).toEqual('11');
+    expect(result[1][0]).toEqual('12');
+    expect(result[2][0]).toEqual('13');
+    expect(result[0][1]).toEqual('21');
+    expect(result[1][1]).toEqual('22');
+    expect(result[2][1]).toEqual('23');
+  });
+
   it('returns the grid if the desired section is the same as the grid', () => {
     // Arrange
     var grid = createGrid([4,4]);
