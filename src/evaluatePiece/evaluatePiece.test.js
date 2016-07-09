@@ -1,5 +1,5 @@
 var {evaluatePiece} = require('./evaluatePiece');
-var {no, D, U, R, L, UR} = require('../mocks/mocks')
+var {no, D, U, R, L, UR} = require('../mocks/mocks');
 
 describe('evaluatePiece', () => {
   it('can have no connections', () => {
