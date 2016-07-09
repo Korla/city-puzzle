@@ -2,7 +2,7 @@ var {noOverlap} = require('./noOverlap');
 var {empty, D} = require('../mocks/mocks');
 
 describe('noOverlap', () => {
-  it('can handle a single element', () => {
+  it('single element', () => {
     // Arrange
     var first = [[empty()]];
     var second = [[D()]];
@@ -11,7 +11,7 @@ describe('noOverlap', () => {
     // Assert
     expect(noOverlap(first, second)).toEqual(true);
   });
-  it('can handle a row', () => {
+  it('row', () => {
     // Arrange
     var first = [[empty(), empty()]];
     var second = [[D(), D()]];
@@ -20,7 +20,7 @@ describe('noOverlap', () => {
     // Assert
     expect(noOverlap(first, second)).toEqual(true);
   });
-  it('can handle a column', () => {
+  it('column', () => {
     // Arrange
     var first = [[empty()], [empty()]];
     var second = [[D()], [D()]];
@@ -29,7 +29,7 @@ describe('noOverlap', () => {
     // Assert
     expect(noOverlap(first, second)).toEqual(true);
   });
-  it('can handle a rectangle', () => {
+  it('rectangle', () => {
     // Arrange
     var first = [[empty(), empty()], [empty(), empty()]];
     var second = [[D(), D()], [D(), D()]];
@@ -38,7 +38,7 @@ describe('noOverlap', () => {
     // Assert
     expect(noOverlap(first, second)).toEqual(true);
   });
-  it('can handle empty elements in either argument', () => {
+  it('empty elements in either argument', () => {
     // Arrange
     var first = [[empty()], [D()]];
     var second = [[D()], [empty()]];
@@ -46,5 +46,14 @@ describe('noOverlap', () => {
     // Act
     // Assert
     expect(noOverlap(first, second)).toEqual(true);
+  });
+  it('arguments of different size throws', () => {
+    // Arrange
+    var first = [[empty(), empty(), empty()]];
+    var second = [[D(), D()]];
+
+    // Act
+    // Assert
+    expect(() => noOverlap(first, second)).toThrow()
   });
 });
