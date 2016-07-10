@@ -27,4 +27,13 @@ var URDL = spotFn([1,1,1,1]);
 
 var empty = () => ({empty: true});
 
-export {no, U, R, D, L, UR, UD, UL, RD, RL, DL, URD, URL, UDL, RDL, URDL, empty};
+var roadsEq = (s1, s2) => {
+  var roadsEq = true;
+  for(var i = 0; i < s1.length; i++) {
+    roadsEq = roadsEq && s1[i] === s2[i];
+  }
+  return roadsEq
+}
+var eq = (s1, s2) => s1.empty === s2.empty && roadsEq(s1, s2);
+
+export {no, U, R, D, L, UR, UD, UL, RD, RL, DL, URD, URL, UDL, RDL, URDL, empty, eq};

@@ -1,4 +1,5 @@
 var {section} = require('./section');
+var {U, D, L, R, eq} = require('../mocks/mocks');
 
 describe('section', () => {
   it('can return a row section', () => {

@@ -8,4 +8,11 @@ var expectGrid = grid => {
   grid.forEach(row => expect(row.length === rowLength, `All rows must be of equal length.`));
 }
 
-export {expect, expectGrid};
+var expectSameSizeGrids = (g1, g2) => {
+  expectGrid(g1);
+  expectGrid(g2);
+  expect(g1.length === g2.length, `Grids must have same number of rows: ${g1.length} and ${g2.length}`);
+  expect(g1[0].length === g2[0].length, `Grids must have same number of columns: ${g1.length} and ${g2.length}`);
+}
+
+export {expect, expectGrid, expectSameSizeGrids};

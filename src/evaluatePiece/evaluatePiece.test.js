@@ -1,5 +1,5 @@
 var {evaluatePiece} = require('./evaluatePiece');
-var {no, D, U, R, L, UR} = require('../mocks/mocks');
+var {no, D, U, R, L, UR, empty} = require('../mocks/mocks');
 
 describe('evaluatePiece', () => {
   it('can have no connections', () => {
@@ -176,6 +176,19 @@ describe('evaluatePiece', () => {
     var evalgrid = [
       [no(), D(), no()],
       [no(), UR(), L()],
+      [no(), no(), no()]
+    ];
+
+    // Act
+    // Assert
+    expect(evaluatePiece(evalgrid)).toEqual(true);
+  });
+
+  it('can have empty spots', () => {
+    // Arrange
+    var evalgrid = [
+      [no(), D(), empty()],
+      [no(), UR(), empty()],
       [no(), no(), no()]
     ];
 

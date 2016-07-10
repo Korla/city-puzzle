@@ -7,7 +7,7 @@ var directions = {
   left: 3
 }
 
-var matches = spot => (dir1, p2, dir2) => spot.roads[dir1] === p2.roads[dir2];
+var matches = spot => (dir1, p2, dir2) => spot.empty || p2.empty || spot.roads[dir1] === p2.roads[dir2];
 
 var evaluatePiece = evalgrid => {
   expectGrid(evalgrid);
