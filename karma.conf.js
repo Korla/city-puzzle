@@ -2,7 +2,10 @@ var webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
   config.set({
-    files: ['src/**/*.test.js'],
+    files: [
+      'node_modules/babel-polyfill/browser.js',
+      'src/**/*.test.js'
+    ],
     preprocessors: {
       'src/**/*.test.js': ['webpack', 'sourcemap']
     },
