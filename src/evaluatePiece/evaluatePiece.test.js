@@ -196,6 +196,19 @@ describe('evaluatePiece', () => {
     // Assert
     expect(evaluatePiece(evalgrid)).toEqual(true);
   });
+
+  it('needs to have a non-empty neighbor', () => {
+    // Arrange
+    var evalgrid = [
+      [no(), empty(), R()],
+      [empty(), UR(), empty()],
+      [L(), empty(), no()]
+    ];
+
+    // Act
+    // Assert
+    expect(evaluatePiece(evalgrid)).toEqual(false);
+  });
 });
 
 function createGridWithRoads(roads) {
