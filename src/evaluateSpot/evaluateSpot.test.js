@@ -4,7 +4,7 @@ var {empty, no, D, U, UD, RD} = require('../mocks/mocks');
 describe('evaluateSpot', () => {
   it('can handle a row', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D(), D()],
       [UD(), empty(), empty(), UD()],
       [U(), U(), U(), U()]
@@ -13,11 +13,11 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(evaluateSpot(grid, piece)).toEqual(true);
+    expect(evaluateSpot(piece)(spot)).toEqual(true);
   });
   it('can handle a column', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D()],
       [UD(), empty(), UD()],
       [UD(), empty(), UD()],
@@ -30,11 +30,11 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(evaluateSpot(grid, piece)).toEqual(true);
+    expect(evaluateSpot(piece)(spot)).toEqual(true);
   });
   it('can handle a rectangle', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D(), D()],
       [UD(), empty(), empty(), UD()],
       [UD(), empty(), empty(), UD()],
@@ -47,11 +47,11 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(evaluateSpot(grid, piece)).toEqual(true);
+    expect(evaluateSpot(piece)(spot)).toEqual(true);
   });
   it('can handle empty spots in the piece', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D(), D()],
       [UD(), empty(), empty(), UD()],
       [UD(), empty(), RD(), UD()],
@@ -64,11 +64,11 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(evaluateSpot(grid, piece)).toEqual(true);
+    expect(evaluateSpot(piece)(spot)).toEqual(true);
   });
   it('wrong piece size throws', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D(), D()],
       [UD(), empty(), empty(), UD()],
       [U(), U(), U(), U()]
@@ -77,11 +77,11 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(() => evaluateSpot(grid, piece)).toThrow();
+    expect(() => evaluateSpot(piece)(spot)).toThrow();
   });
   it('wrong connections returns false', () => {
     // Arrange
-    var grid = [
+    var spot = [
       [D(), D(), D(), D()],
       [UD(), empty(), empty(), UD()],
       [U(), U(), U(), U()]
@@ -90,6 +90,6 @@ describe('evaluateSpot', () => {
 
     // Act
     // Assert
-    expect(evaluateSpot(grid, piece)).toEqual(false);
+    expect(evaluateSpot(piece)(spot)).toEqual(false);
   });
 });

@@ -32,7 +32,7 @@ var expectGridAndPiece = (spot, piece) => {
   return true;
 }
 
-var evaluateSpot = (spot, piece) =>
+var evaluateSpot = piece => spot =>
   expectGridAndPiece(spot, piece) &&
   noOverlap(section(spot, [1,1], [spot[0].length - 2, spot.length - 2]), piece) &&
   evalPieces(join(spot, piece, [1,1]))

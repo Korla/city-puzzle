@@ -1,14 +1,18 @@
 var {expectGrid} = require('../utils/expect');
 
+var rotateSpot = spot => {
+  if(spot.empty) return;
+  spot.roads.unshift(spot.roads.pop());
+}
 var rotate = grid => {
   expectGrid(grid);
+
   var rotated = [];
-  for(var y = 0; y < grid.length; y++) {
-    var row = grid[y];
-    for(var x = 0; x < row.length; x++) {
-      var spot = row[x];
-      rotated[x] = rotated[x] || [];
-      rotated[x].unshift(spot);
+  for(var x = 0; x < grid[0].length; x++) {
+    rotated[x] = [];
+    for(var y = 0; y < grid.length; y++) {
+      rotated[x].unshift(grid[y][x])
+      rotateSpot(rotated[x][0]);
     }
   }
   return rotated;
