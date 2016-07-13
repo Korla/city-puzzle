@@ -36,5 +36,6 @@ var roadsEq = (s1, s2) => {
 var eq = (s1, s2) => s1.empty === s2.empty && roadsEq(s1, s2);
 
 var log = (...d) => d.forEach(a => console.log(JSON.stringify(a)));
+var logMap = d => log(d) || d;
 
-export {no, U, R, D, L, UR, UD, UL, RD, RL, DL, URD, URL, UDL, RDL, URDL, empty, eq, log};
+export {no, U, R, D, L, UR, UD, UL, RD, RL, DL, URD, URL, UDL, RDL, URDL, empty, eq, log, logMap};
