@@ -30,6 +30,7 @@
   "dependencies": {
     "babel-core": "6.10.4",
     "babel-loader": "6.2.4",
-    "css-loader": "0.23.1"
+    "css-loader": "0.23.1",
+    "three": "0.79.0"
   }
 }
